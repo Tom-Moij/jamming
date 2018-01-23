@@ -42,10 +42,7 @@ class App extends Component {
     const updatedTracks = playlistTracks.filter(currentTrack => currentTrack.id !== track.id);
 
     this.setState({
-      playlistTracks: [
-        ...playlistTracks,
-        updatedTracks,
-      ],
+      playlistTracks: updatedTracks,
     });
   };
 
