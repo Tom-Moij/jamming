@@ -5,6 +5,8 @@ import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 
+import Spotify from '../../Util/Spotify';
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -14,6 +16,10 @@ class App extends Component {
       searchResults: [],
       playlistTracks: [],
     }
+  }
+
+  componentDidMount() {
+    Spotify.getAccessToken();
   }
 
   addTrack = track => {
@@ -62,9 +68,11 @@ class App extends Component {
   };
 
   search = search => {
-    // This has to be extented with the Spotify search method.
-
-    console.log(search);
+    Spotify.search(search).then(results => {
+      this.setState({
+        searchResults: results,
+      });
+    });
   }
 
   render() {
