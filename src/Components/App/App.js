@@ -27,7 +27,7 @@ class App extends Component {
           <SearchBar />
 
           <div className="App-playlist">
-            <SearchResults tracks={playlistTracks} searchResults={searchResults} />
+            <SearchResults searchResults={searchResults} />
 
             <Playlist name={playlistName} tracks={playlistTracks} />
           </div>
