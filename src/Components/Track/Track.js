@@ -9,7 +9,13 @@ class Track extends Component {
       return <a className="Track-action">-</a>;
     }
 
-    return <a className="Track-action">+</a>;
+    return <a className="Track-action" onClick={this.addTrack}>+</a>;
+  };
+
+  addTrack = () => {
+    const {track, onAdd} = this.props;
+
+    onAdd(track);
   };
 
   render() {

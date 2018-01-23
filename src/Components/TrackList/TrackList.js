@@ -4,8 +4,10 @@ import Track from '../Track/Track';
 
 class TrackList extends Component {
   renderTracks = track => {
+    const {onAdd} = this.props;
+
     return (
-      <Track key={track.id} track={track} />
+      <Track key={track.id} track={track} onAdd={onAdd} />
     );
   }
 
