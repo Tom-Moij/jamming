@@ -113,10 +113,19 @@ class Track extends Component {
   }
 
   renderTimeIndicator() {
+    const {track: {previewUrl}} = this.props;
     const {duration, currentTime} = this.state;
 
     const formattedCurrentTime = formatTime(currentTime);
     const formattedDuration = formatTime(duration);
+
+    if (previewUrl === null) {
+      return (
+        <div className="Track__timeIndicator">
+          <p>There is no audio available for this Track.</p>
+        </div>
+      );
+    }
 
     return (
       <div className="Track__timeIndicator">
