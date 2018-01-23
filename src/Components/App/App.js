@@ -29,7 +29,7 @@ class App extends Component {
           <div className="App-playlist">
             <SearchResults searchResults={searchResults} />
 
-            <Playlist name={playlistName} tracks={playlistTracks} />
+            <Playlist name={playlistName} playlistTracks={playlistTracks} />
           </div>
         </div>
       </div>
