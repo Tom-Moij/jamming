@@ -49,6 +49,18 @@ class App extends Component {
     });
   };
 
+  savePlaylist = () => {
+    const {playlistTracks} = this.state;
+    const trackURIs = playlistTracks.map(track => track.uri);
+
+    // Spotify savePlaylist method will be used here.
+
+    this.setState({
+      playlistName: 'New Playlist',
+      playlistTracks: [],
+    });
+  };
+
   render() {
     const {searchResults, playlistName, playlistTracks} = this.state;
 
@@ -65,6 +77,7 @@ class App extends Component {
             <Playlist
               name={playlistName}
               playlistTracks={playlistTracks}
+              onSave={this.savePlaylist}
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
             />

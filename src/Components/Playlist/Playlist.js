@@ -11,7 +11,7 @@ class Playlist extends Component {
   }
 
   render() {
-    const {name, playlistTracks, onRemove} = this.props;
+    const {name, playlistTracks, onRemove, onSave} = this.props;
 
     return (
       <div className="Playlist">
@@ -19,7 +19,7 @@ class Playlist extends Component {
 
         <TrackList tracks={playlistTracks} onRemove={onRemove} />
 
-        <a className="Playlist-save">SAVE TO SPOTIFY</a>
+        <a className="Playlist-save" onClick={onSave}>SAVE TO SPOTIFY</a>
       </div>
     );
   }
