@@ -61,6 +61,12 @@ class App extends Component {
     });
   };
 
+  search = search => {
+    // This has to be extented with the Spotify search method.
+
+    console.log(search);
+  }
+
   render() {
     const {searchResults, playlistName, playlistTracks} = this.state;
 
@@ -69,7 +75,7 @@ class App extends Component {
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
 
         <div className="App">
-          <SearchBar />
+          <SearchBar onSearch={this.search} />
 
           <div className="App-playlist">
             <SearchResults searchResults={searchResults} onAdd={this.addTrack} />
