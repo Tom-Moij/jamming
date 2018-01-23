@@ -31,6 +31,18 @@ class App extends Component {
     return;
   };
 
+  removeTrack = track => {
+    const {playlistTracks} = this.state;
+    const updatedTracks = playlistTracks.filter(currentTrack => currentTrack.id !== track.id);
+
+    this.setState({
+      playlistTracks: [
+        ...playlistTracks,
+        updatedTracks,
+      ],
+    });
+  };
+
   render() {
     const {searchResults, playlistName, playlistTracks} = this.state;
 
@@ -44,7 +56,11 @@ class App extends Component {
           <div className="App-playlist">
             <SearchResults searchResults={searchResults} onAdd={this.addTrack} />
 
-            <Playlist name={playlistName} playlistTracks={playlistTracks} />
+            <Playlist
+              name={playlistName}
+              playlistTracks={playlistTracks}
+              onRemove={this.removeTrack}
+            />
           </div>
         </div>
       </div>

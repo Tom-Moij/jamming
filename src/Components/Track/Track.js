@@ -6,7 +6,7 @@ class Track extends Component {
     const {onRemove} = this.props;
 
     if (onRemove) {
-      return <a className="Track-action">-</a>;
+      return <a className="Track-action" onClick={this.removeTrack}>-</a>;
     }
 
     return <a className="Track-action" onClick={this.addTrack}>+</a>;
@@ -16,6 +16,12 @@ class Track extends Component {
     const {track, onAdd} = this.props;
 
     onAdd(track);
+  };
+
+  removeTrack = () => {
+    const {track, onRemove} = this.props;
+
+    onRemove(track);
   };
 
   render() {
