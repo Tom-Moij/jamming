@@ -15,7 +15,7 @@ class Playlist extends Component {
 
     return (
       <div className="Playlist">
-        <input defaultValue={name} onChange={this.handleNameChange} />
+        <input value={name} onChange={this.handleNameChange} />
 
         <TrackList tracks={playlistTracks} onRemove={onRemove} />
 
