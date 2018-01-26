@@ -16,9 +16,13 @@ class Track extends Component {
   }
 
   onPlay() {
+    const {track: {previewUrl}, onTrackPlay} = this.props;
+    
     this.setState({
       isPlaying: true,
     });
+
+    onTrackPlay(previewUrl);
 
     this.player.play();
   }
@@ -39,6 +43,15 @@ class Track extends Component {
     }
 
     this.onPlay();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {isPlaying} = this.state;
+    const {track: {previewUrl}} = this.props;
+
+    if (isPlaying && nextProps.currentSong !== previewUrl) {
+      this.onPause();
+    }
   }
 
   updateTime() {

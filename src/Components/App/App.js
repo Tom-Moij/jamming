@@ -13,6 +13,7 @@ class App extends Component {
 
     this.state = {
       playlistName: 'New Playlist',
+      currentlyPlaying: '',
       searchResults: [],
       playlistTracks: [],
     }
@@ -72,8 +73,15 @@ class App extends Component {
     });
   }
 
+  onTrackPlay = (currentSong) => {
+    this.setState({
+      currentlyPlaying: currentSong,
+    })
+  }
+
   render() {
-    const {searchResults, playlistName, playlistTracks} = this.state;
+    const {searchResults, playlistName, playlistTracks, currentlyPlaying} = this.state;
+
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -82,14 +90,21 @@ class App extends Component {
           <SearchBar onSearch={this.search} />
 
           <div className="App-playlist">
-            <SearchResults searchResults={searchResults} onAdd={this.addTrack} />
+            <SearchResults
+              searchResults={searchResults}
+              onAdd={this.addTrack}
+              onTrackPlay={this.onTrackPlay}
+              currentSong={currentlyPlaying}
+            />
 
             <Playlist
               name={playlistName}
               playlistTracks={playlistTracks}
               onSave={this.savePlaylist}
               onRemove={this.removeTrack}
+              onTrackPlay={this.onTrackPlay}
               onNameChange={this.updatePlaylistName}
+              currentSong={currentlyPlaying}
             />
           </div>
         </div>

@@ -11,13 +11,18 @@ class Playlist extends Component {
   }
 
   render() {
-    const {name, playlistTracks, onRemove, onSave} = this.props;
+    const {name, playlistTracks, onRemove, onSave, onTrackPlay, currentSong} = this.props;
 
     return (
       <div className="Playlist">
         <input type={"text"} value={name} onChange={this.handleNameChange} />
 
-        <TrackList tracks={playlistTracks} onRemove={onRemove} />
+        <TrackList
+          tracks={playlistTracks}
+          onRemove={onRemove}
+          onTrackPlay={onTrackPlay}
+          currentSong={currentSong}
+        />
 
         <a className="Playlist-save" onClick={onSave}>SAVE TO SPOTIFY</a>
       </div>

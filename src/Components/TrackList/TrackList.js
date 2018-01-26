@@ -4,10 +4,17 @@ import Track from '../Track/Track';
 
 class TrackList extends Component {
   renderTracks = track => {
-    const {onAdd, onRemove} = this.props;
+    const {onAdd, onRemove, onTrackPlay, currentSong} = this.props;
 
     return (
-      <Track key={track.id} track={track} onAdd={onAdd} onRemove={onRemove} />
+      <Track
+        key={track.id}
+        track={track}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        onTrackPlay={onTrackPlay}
+        currentSong={currentSong}
+      />
     );
   }
 
